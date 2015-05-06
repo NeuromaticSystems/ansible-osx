@@ -1,0 +1,9 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install rubymine
+      mac_pkg: pkg_type=app
+               url=http://download-cf.jetbrains.com/ruby/RubyMine-7.1.1.dmg
+               archive_type=dmg archive_path='WebStorm.app'
+      sudo: yes
