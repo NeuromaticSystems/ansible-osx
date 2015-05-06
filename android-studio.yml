@@ -4,7 +4,6 @@
   tasks:
     - name: install android studio
       mac_pkg: pkg_type=app
-               #url=https://dl.google.com/dl/android/studio/install/1.1.0/android-studio-ide-135.1740770-mac.dmg
                url=https://dl.google.com/dl/android/studio/install/1.2.0.12/android-studio-ide-141.1890965-mac.dmg
                archive_type=dmg archive_path='Android Studio.app'
       sudo: yes
