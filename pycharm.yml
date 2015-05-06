@@ -5,5 +5,5 @@
     - name: install pycharm
       mac_pkg: pkg_type=app
                url=http://download.jetbrains.com/python/pycharm-professional-4.0.6.dmg
-               archive_type=dmg archive_path='WebStorm.app'
+               archive_type=dmg archive_path='PyCharm.app'
       sudo: yes
