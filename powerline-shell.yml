@@ -1,0 +1,27 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: get powerline-shell script
+      git: repo=https://github.com/milkbikis/powerline-shell
+           dest=~/Application/powerline-shell
+
+    - name: Create basic config file
+      command: cp ~/Application/powerline-shell/config.py.dist ~/Application/powerline-shell/config.py
+
+    - name: install powerline-shell
+      script: ~/Application/powerline-shell/install.py
+    
+    - name: link symbolic file
+      file: src={{item.from}} dest={{item.to}} state=link
+      sudo: no
+      with_items:
+         - from: ~/Application/powerline-shell/powerline-shell.py
+           to: ~/bin/powerline-shell.py
+
+# git clone https://github.com/milkbikis/powerline-shell
+# cd powerline-shell
+# cp config.py.dist config.py
+# ./install.py
+# ln -s <path/to/powerline-shell.py> ~/bin/powerline-shell.py
+
