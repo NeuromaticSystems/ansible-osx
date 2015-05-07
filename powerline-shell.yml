@@ -4,7 +4,7 @@
   tasks:
     - name: get powerline-shell script
       git: repo=https://github.com/milkbikis/powerline-shell
-           dest=/opt/
+           dest=/opt/powerline-shell
 
     - name: Create basic config file
       command: cp /opt/powerline-shell/config.py.dist /opt/powerline-shell/config.py
