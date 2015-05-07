@@ -10,7 +10,7 @@
       command: cp /opt/powerline-shell/config.py.dist /opt/powerline-shell/config.py
 
     - name: install powerline-shell
-      script: /opt/powerline-shell/install.py
+      command: (cd /opt/powerline-shell ; /opt/powerline-shell/install.py)
     
     - name: link symbolic file
       file: src={{item.from}} dest={{item.to}} state=link
