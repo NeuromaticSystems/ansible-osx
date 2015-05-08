@@ -11,17 +11,19 @@
 
     - name: install powerline-shell
       command: /opt/powerline-shell/install.py
+      args:
+        chdir: /opt/powerline-shell/
+        creates: /opt/powerline-shell/powerline-shell.py
+
+    - name: make script executible
+      file: path=/opt/powerline-shell/powerline-shell.py state=file mode=755
     
+    - name: make /opt/bin
+      file: path=/opt/bin state=directory
+
     - name: link symbolic file
       file: src={{item.from}} dest={{item.to}} state=link
-      sudo: no
       with_items:
-         - from: /opt/powerline-shell/powerline-shell.py
-           to: /opt/bin/powerline-shell.py
-
-# git clone https://github.com/milkbikis/powerline-shell
-# cd powerline-shell
-# cp config.py.dist config.py
-# ./install.py
-# ln -s <path/to/powerline-shell.py> ~/bin/powerline-shell.py
+        - from: /opt/powerline-shell/powerline-shell.py
+          to: /opt/bin/powerline-shell.py
 

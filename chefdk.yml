@@ -1,0 +1,9 @@
+
+---
+- hosts: workstation
+    
+  tasks:
+    - name: install chefdk
+      mac_pkg: url=https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.8/x86_64/chefdk-0.5.1-1.dmg
+               archive_type=dmg archive_path=chefdk-0.5.1-1.pkg
+      sudo: yes
