@@ -6,5 +6,5 @@
     - name: install googledrive
       mac_pkg: pkg_type=app
                url=https://dl.google.com/drive/installgoogledrive.dmg
-               archive_type=dmg archive_path=Google%20Drive.app
+               archive_type=dmg archive_path='Google Drive.app'
       sudo: yes
