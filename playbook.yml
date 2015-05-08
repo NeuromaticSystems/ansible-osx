@@ -1,0 +1,160 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: print from playbook
+      debug: msg="in playbooks/playbook.yml"
+
+    - name: easy install pip
+      easy_install: name=pip
+      sudo: yes
+
+    - name: install apps from pip
+      pip: name={{item}}
+      sudo: yes
+      with_items:
+          - virtualenv
+          - virtualenvwrapper
+          - cliff
+          - pyyaml
+          - awscli
+          - thefuck
+          - Fabric
+          - boto
+          - bpython
+          - flake8
+          - pythong
+          #- dulwich
+          #- Flask
+          #- Jinja2
+          #- SQLAlchemy
+          #- Sphinx
+          #- Werkzeug
+          #- hieroglyph
+          #- httpie
+          #- mercurial
+          #- passlib
+          #- pip-tools
+          #- psdash
+          #- psutil
+          #- requests
+          #- see
+          #- six
+          #- uWSGI
+
+    - name: install homebrew_taps
+      homebrew_tap: tap={{item}} state=present
+      with_items:
+          - gapple/services
+
+    - name: install apps from homebrew
+      sudo: false
+      homebrew: name={{item}} state=present update_homebrew=yes
+      with_items:
+          - coreutils
+          - git
+          - maven
+          - dos2unix
+          - wget
+          - ctags
+          - dnsmasq
+          - httpie
+          - mackup
+          - node
+          - rbenv
+          - ruby
+          - redis
+          - mongodb
+          - rabbitmq
+          - htop
+          - ack
+          - nmap
+          - tree
+          - fortune
+          - git-extras
+          - gnu-sed
+          - go
+          - graphviz
+          - htop-osx
+          - imagemagick
+          - irssi
+          - john
+          - mariadb
+          - mongodb
+          - notmuch
+          - offline-imap
+          - selenium-server-standalone
+          - sqlite
+          - tmux
+          - urlview
+          - vim
+          - vimpager
+          - vnstat
+          - wireshark
+          - iftop
+          #- jq
+          #- leiningen
+          #- libgit2
+          #- macvim
+          #- tomcat
+          #- mpc
+          #- mpd
+          #- msmtp
+          #- mtr
+          #- mutt
+          #- ncdu
+          #- nginx
+          #- nmap
+          #- node
+          #- postgresql
+          #- reattach-to-user-namespace
+          #- rebar
+          #- rethinkdb
+          #- ruby
+          #- task
+          #- the_silver_searcher
+          #- tmate
+          #- watchman
+          #- wget
+          #- xapian
+          #- zeromq
+          #- zsh	 
+
+    # http://caskroom.io/
+    - name: Install Casks from homebrew cask
+      homebrew_cask: name={{item}}
+      with_items:
+          - slack
+          - spotify
+          
+    # requires node/npm from above
+    - name: install global apps from npm
+      npm: name={{item}} global=yes
+      with_items:
+          - grunt-cli
+
+#    - name: install gvm the Groovy enVironment Manager
+#      mac_pkg: pkg_type=script script_creates=/usr/local/bin/gvm
+#               script_prefix="echo | " script_exe=bash
+#               url=http://get.gvmtool.net
+#
+
+#    - name: create homdir symlinks
+#      file: src={{item.from}} dest={{item.to}} state=link
+#      sudo: no
+#      with_items:
+#         # ~/Dropbox/ubuntu/* is now deprecated for Mackup and ~/Dropbox/Mackup
+#         - from: ~/Dropbox/mac/bin
+#           to: ~/bin
+
+    - name: install gems
+      gem: name={{item}} state=latest
+      with_items:
+          - brewbygems
+          - bundler
+          - compass
+
+    - name: Creates mkvirtualenv directory
+      file: path=~/.virtualenvs state=directory
+
+
