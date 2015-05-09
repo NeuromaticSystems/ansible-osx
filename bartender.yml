@@ -1,0 +1,10 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install bartender
+      mac_pkg: pkg_type=app
+               url=http://www.macbartender.com/Demo/Bartender.zip
+               archive_type=zip archive_path='Bartender.app'
+      sudo: yes
+
