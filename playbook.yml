@@ -70,6 +70,7 @@
           - ack
           - nmap
           - tree
+          - redis
           - fortune
           - git-extras
           - gnu-sed
