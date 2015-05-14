@@ -92,6 +92,7 @@
           - vnstat
           - wireshark
           - iftop
+          - ssh-copy-id
           #- jq
           #- leiningen
           #- libgit2
