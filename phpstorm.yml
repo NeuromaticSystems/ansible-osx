@@ -1,0 +1,9 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install PhpStorm
+      mac_pkg: pkg_type=app
+               url=http://download-cf.jetbrains.com/webide/PhpStorm-8.0.3.dmg
+               archive_type=dmg archive_path='PhpStorm.app'
+      sudo: yes
